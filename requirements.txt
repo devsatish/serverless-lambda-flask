@@ -4,3 +4,36 @@ itsdangerous==2.1.2
 Jinja2==3.1.2
 MarkupSafe==2.1.1
 Werkzeug==2.1.2
+
+# Python version requirement
+python_version >= "3.11"
+
+# Example usage of new Python 3.11 features
+
+# Exception Groups and the new `except*` syntax
+def handle_exceptions():
+    try:
+        # Some code that may raise multiple exceptions
+        pass
+    except* (ValueError, TypeError) as e:
+        print(f"Handled exceptions: {e}")
+
+# `Self` type in class methods for better type hinting
+from typing import Self
+
+class Example:
+    def set_value(self, value: int) -> Self:
+        self.value = value
+        return self
+
+# Variadic Generics for more flexible type annotations
+from typing import TypeVar, Generic
+
+T = TypeVar('T')
+
+class Container(Generic[T]):
+    def __init__(self, *items: T):
+        self.items = items
+
+    def get_items(self) -> tuple[T, ...]:
+        return self.items
