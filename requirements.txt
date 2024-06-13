@@ -1,6 +1,28 @@
-click==8.1.3
-Flask==2.1.2
-itsdangerous==2.1.2
-Jinja2==3.1.2
-MarkupSafe==2.1.1
-Werkzeug==2.1.2
+# Example of using Exception Groups and the new `except*` syntax
+def handle_exceptions():
+    try:
+        # Some code that may raise multiple exceptions
+        pass
+    except* (ValueError, TypeError) as e:
+        print(f"Handled multiple exceptions: {e}")
+
+# Example of using `Self` type in class methods for better type hinting
+from typing import Self
+
+class MyClass:
+    def set_value(self, value: int) -> Self:
+        self.value = value
+        return self
+
+# Example of using Variadic Generics for more flexible type annotations
+from typing import TypeVar, Generic
+
+T = TypeVar('T')
+U = TypeVar('U')
+
+class Pair(Generic[T, U]):
+    def __init__(self, first: T, second: U):
+        self.first = first
+        self.second = second
+
+pair = Pair(1, "apple")
